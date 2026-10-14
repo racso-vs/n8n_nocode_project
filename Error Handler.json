@@ -1,0 +1,68 @@
+{
+  "name": "Trading Radar - Error Handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9c97e77f-3ef2-4fb6-933e-1393d02b817b",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "5510625379",
+        "text": "=     ⚠️ Workflow failed: {{ $json.workflow.name}}      \n    Node: {{ $json.execution.lastNodeExecuted }}    \n    Error: {{ $json.execution.error.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "ebb364fa-f6fc-4142-a946-b742c1f2d367",
+      "name": "Send a text message",
+      "webhookId": "640cdbd0-8339-4465-81b4-5ea92c85a723",
+      "credentials": {
+        "telegramApi": {
+          "id": "F4tHULNuSG6c0esl",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "bb13b463-4ccb-4d8a-8fa9-d6aaf01d4302",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fd30e3268ff774a0f11a193384b10df288ed6f13b71ef626ce9086d09b545eac"
+  },
+  "nodeGroups": [],
+  "id": "4W3D0e98Ms8AUpWg",
+  "tags": []
+}
